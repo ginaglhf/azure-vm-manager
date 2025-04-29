@@ -7,10 +7,11 @@ using Azure.ResourceManager;
 using Azure.ResourceManager.Compute;
 using Azure.ResourceManager.Resources;
 using Microsoft.Extensions.Configuration;
+using Services;
 
 class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         var config = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
@@ -35,20 +36,8 @@ class Program
         var subscription = armClient.GetSubscriptionResource(
             new ResourceIdentifier($"/subscriptions/{subscriptionId}"));
 
-        Console.WriteLine("Listing your VMs...");
-
-        if (!subscription.GetVirtualMachines().Any())
-        {
-            Console.WriteLine("No VMs found in this subscription.");
-            return;
-        }
-        // Get all VMs
-        foreach (var vm in subscription.GetVirtualMachines())
-        {
-            Console.WriteLine($"VM Name: {vm.Data.Name}");
-            Console.WriteLine($"Location: {vm.Data.Location}");
-            Console.WriteLine($"Provisioning State: {vm.Data.ProvisioningState}");
-            Console.WriteLine("---------------------------");
-        }
+        VmService vmService = new VmService(subscription);
+        await vmService.ListVmsAsync();
+        
     }
 }

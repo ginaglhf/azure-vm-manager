@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AzureVmManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a104895bf59144ef38ca43f63e8f87e5c24d8aa5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureVmManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureVmManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
